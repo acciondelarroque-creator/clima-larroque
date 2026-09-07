@@ -1,0 +1,79 @@
+{
+  "default": "Larroque",
+  "default_id": "7868",
+  "fuente": "Servicio Meteorológico Nacional",
+  "actualizado": "2026-09-07T12:51+00:00",
+  "localidades": [
+    {
+      "id": "7868",
+      "localidad": "Larroque",
+      "provincia": "Entre Ríos",
+      "departamento": "Gualeguaychú",
+      "lat": -33.0,
+      "lon": -59.0,
+      "actual": {
+        "temperatura": 5.8,
+        "sensacion": 4.8,
+        "humedad": 85.0,
+        "presion": 1025.6,
+        "viento_kmh": 6.0,
+        "viento_direccion": 45.0,
+        "estado": "Despejado",
+        "weather_id": 3,
+        "fecha": "2026-09-07T09:00:00-03:00",
+        "estacion_id": 87497,
+        "visibilidad_km": 15.0
+      },
+      "pronostico": [
+        {
+          "fecha": "2026-09-07",
+          "min": 2.0,
+          "max": 14.0,
+          "estado": "Despejado",
+          "weather_id": 3,
+          "lluvia": 0.0
+        },
+        {
+          "fecha": "2026-09-08",
+          "min": 4.0,
+          "max": 17.0,
+          "estado": "Despejado",
+          "weather_id": 3,
+          "lluvia": 0.0
+        },
+        {
+          "fecha": "2026-09-09",
+          "min": 7.0,
+          "max": 18.0,
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 0.0
+        },
+        {
+          "fecha": "2026-09-10",
+          "min": 10.0,
+          "max": 23.0,
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 0.0
+        },
+        {
+          "fecha": "2026-09-11",
+          "min": 11.0,
+          "max": 16.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 40.0
+        },
+        {
+          "fecha": "2026-09-12",
+          "min": 8.0,
+          "max": 12.0,
+          "estado": "Lluvias aisladas",
+          "weather_id": 72,
+          "lluvia": 40.0
+        }
+      ]
+    }
+  ]
+}
