@@ -11,12 +11,21 @@ SMN_API = "https://ws1.smn.gob.ar/v1"
 DEFAULT_NAME = "Larroque"
 DEFAULT_PROVINCE = "Entre Ríos"
 
+LOCALIDADES = [
+    "Larroque", "Gualeguaychú", "Gualeguay", "Concordia", "Paraná",
+    "Concepción del Uruguay", "Villaguay", "Victoria", "La Paz", "Chajarí",
+    "Colón", "Federación", "Diamante", "Nogoyá", "Federal", "Feliciano",
+    "San José", "San Salvador", "Rosario del Tala", "Basavilbaso", "Urdinarrain",
+    "Crespo", "Viale", "Hasenkamp", "Hernandarias", "María Grande",
+    "General Ramírez", "Seguí", "Villa Elisa", "Ibicuy", "Ceibas", "Santa Elena"
+]
+
 
 def get_text(url, headers=None, attempts=4):
     last = None
     for attempt in range(1, attempts + 1):
         try:
-            req = urllib.request.Request(url, headers=headers or {"User-Agent": "Accion-Clima/2.0"})
+            req = urllib.request.Request(url, headers=headers or {"User-Agent": "Accion-Clima/2.1"})
             with urllib.request.urlopen(req, timeout=30) as response:
                 return response.read().decode("utf-8")
         except Exception as exc:
@@ -31,7 +40,7 @@ def get_json(url, headers=None, attempts=4):
 
 
 def token_smn():
-    html = get_text(SMN_WEB, {"User-Agent": "Accion-Clima/2.0", "Referer": "https://www.smn.gob.ar/"})
+    html = get_text(SMN_WEB, {"User-Agent": "Accion-Clima/2.1", "Referer": "https://www.smn.gob.ar/"})
     patterns = [
         r"localStorage\.setItem\(['\"]token['\"],\s*['\"]([^'\"]+)",
         r'localStorage\.setItem\("token",\s*"([^"]+)"',
@@ -45,7 +54,7 @@ def token_smn():
 
 def headers(token):
     return {
-        "User-Agent": "Accion-Clima/2.0",
+        "User-Agent": "Accion-Clima/2.1",
         "Authorization": f"JWT {token}",
         "Referer": "https://www.smn.gob.ar/",
         "Accept": "application/json",
@@ -63,7 +72,7 @@ def buscar_localidad(token, nombre):
     url = f"{SMN_API}/georef/location/search?name={urllib.parse.quote(nombre)}"
     resultados = get_json(url, headers(token))
     if not isinstance(resultados, list) or not resultados:
-        raise RuntimeError(f"No se encontró la localidad {nombre}")
+        return None
 
     exactos = [x for x in resultados if isinstance(x, list) and len(x) >= 4 and str(x[1]).strip().lower() == nombre.lower()]
     candidatos = exactos or resultados
@@ -79,13 +88,11 @@ def buscar_localidad(token, nombre):
 
 
 def obtener_actual(token, location_id):
-    url = f"{SMN_API}/weather/location/{location_id}"
-    return get_json(url, headers(token))
+    return get_json(f"{SMN_API}/weather/location/{location_id}", headers(token))
 
 
 def obtener_pronostico(token, location_id):
-    url = f"{SMN_API}/forecast/location/{location_id}"
-    return get_json(url, headers(token))
+    return get_json(f"{SMN_API}/forecast/location/{location_id}", headers(token))
 
 
 def transformar_actual(actual):
@@ -117,17 +124,12 @@ def transformar_pronostico(datos):
     for dia in forecast[:6]:
         if not isinstance(dia, dict):
             continue
-        periodos = []
-        for key in ("early_morning", "morning", "afternoon", "night"):
-            if isinstance(dia.get(key), dict):
-                periodos.append(dia[key])
-
+        periodos = [dia[k] for k in ("early_morning", "morning", "afternoon", "night") if isinstance(dia.get(k), dict)]
         temps = [numero(p.get("temperature")) for p in periodos]
         temps = [x for x in temps if x is not None]
         estados = [p for p in periodos if p.get("weather")]
         principal = next((p for p in estados if p.get("weather", {}).get("description")), estados[0] if estados else {})
         weather = principal.get("weather") or {}
-
         probs = []
         for p in periodos:
             r = p.get("rain_prob_range")
@@ -136,7 +138,6 @@ def transformar_pronostico(datos):
                     probs.append(float(r[1] if len(r) > 1 else r[0]))
                 except (TypeError, ValueError):
                     pass
-
         salida.append({
             "fecha": dia.get("date"),
             "min": min(temps) if temps else None,
@@ -148,19 +149,16 @@ def transformar_pronostico(datos):
     return salida
 
 
-def main():
-    token = token_smn()
-    lugar = buscar_localidad(token, DEFAULT_NAME)
-    actual_raw = obtener_actual(token, lugar["id"])
-    forecast_raw = obtener_pronostico(token, lugar["id"])
-    actual, coord = transformar_actual(actual_raw)
-
-    salida = {
-        "default": lugar["localidad"],
-        "default_id": lugar["id"],
-        "fuente": "Servicio Meteorológico Nacional",
-        "actualizado": datetime.now(timezone.utc).astimezone().isoformat(timespec="minutes"),
-        "localidades": [{
+def cargar_localidad(token, nombre):
+    try:
+        lugar = buscar_localidad(token, nombre)
+        if not lugar:
+            print(f"Sin resultado SMN: {nombre}")
+            return None
+        actual_raw = obtener_actual(token, lugar["id"])
+        forecast_raw = obtener_pronostico(token, lugar["id"])
+        actual, coord = transformar_actual(actual_raw)
+        return {
             "id": lugar["id"],
             "localidad": lugar["localidad"],
             "provincia": lugar["provincia"],
@@ -169,14 +167,34 @@ def main():
             "lon": numero(coord.get("lon")),
             "actual": actual,
             "pronostico": transformar_pronostico(forecast_raw),
-        }],
-    }
+        }
+    except Exception as exc:
+        print(f"Error en {nombre}: {exc}")
+        return None
 
-    Path("clima-localidades.json").write_text(
-        json.dumps(salida, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    print(json.dumps(salida, ensure_ascii=False, indent=2))
+
+def main():
+    token = token_smn()
+    localidades = []
+    for nombre in LOCALIDADES:
+        lugar = cargar_localidad(token, nombre)
+        if lugar:
+            localidades.append(lugar)
+        time.sleep(0.25)
+
+    if not localidades:
+        raise RuntimeError("El SMN no devolvió ninguna localidad")
+
+    predeterminada = next((x for x in localidades if x["localidad"].lower() == DEFAULT_NAME.lower()), localidades[0])
+    salida = {
+        "default": predeterminada["localidad"],
+        "default_id": predeterminada["id"],
+        "fuente": "Servicio Meteorológico Nacional",
+        "actualizado": datetime.now(timezone.utc).astimezone().isoformat(timespec="minutes"),
+        "localidades": localidades,
+    }
+    Path("clima-localidades.json").write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Localidades cargadas: {len(localidades)}")
 
 
 if __name__ == "__main__":
