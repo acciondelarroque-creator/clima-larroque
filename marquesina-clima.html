@@ -1,1 +1,74 @@
-<div id="accion-clima" style="width:100%;font-family:Arial,Helvetica,sans-serif"><style>#accion-clima *{box-sizing:border-box}#accion-clima .bar{height:82px;width:100%;display:flex;align-items:stretch;background:#fff;border:1px solid #dbe4df;border-radius:9px;overflow:hidden;color:#173128}#accion-clima .now{flex:0 0 210px;background:#006837;color:#fff;display:flex;align-items:center;padding:8px 12px;gap:9px}.icon{font-size:30px}.place{font-size:10px;font-weight:800;text-transform:uppercase}.place select{border:0;background:transparent;color:#fff;font-size:10px;font-weight:800;max-width:105px}.place option{color:#173128;background:#fff}.temp{font-size:29px;font-weight:800;line-height:1;margin:3px 0}.state{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:8px;opacity:.82}.days{display:flex;flex:1;min-width:0}.day{flex:1;min-width:0;border-right:1px solid #e3eae6;padding:8px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;align-items:center}.day:last-child{border:0}.name{font-size:10px;font-weight:800;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.wicon{grid-row:1/3;grid-column:2;font-size:23px;margin-left:5px}.vals{font-size:13px;font-weight:800}.min{font-size:9px;color:#7a8781;font-weight:500}.rain{font-size:8px;color:#006837;margin-top:2px}.mobile{display:none}.msg{font-size:11px;color:#718079;padding:0 12px;align-self:center}@media(max-width:699px){#accion-clima .bar{height:74px}.now{flex-basis:148px!important;padding:7px 9px!important;gap:6px!important}.icon{font-size:24px}.place{font-size:9px}.place select{font-size:9px;max-width:78px}.temp{font-size:24px}.state{font-size:9px}.meta{font-size:7px}.desktop{display:none!important}.mobile{display:flex;flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}.mobile::-webkit-scrollbar{display:none}.mobile.dragging{cursor:grabbing;scroll-snap-type:none}.mobile .day{flex:0 0 112px;scroll-snap-align:start}.day{padding:7px 8px}.name{font-size:9px}.wicon{font-size:21px}.vals{font-size:12px}.min{font-size:8px}.rain{font-size:7px}}</style><div class="bar"><div class="now"><div class="icon" id="ci">🌤️</div><div><div class="place">📍 <select id="cl"><option value="__auto">Detectar ubicación</option></select></div><div class="temp" id="ct">—°</div><div class="state" id="cs">Cargando clima…</div><div class="meta" id="cm">SMN</div></div></div><div class="days desktop" id="cd"></div><div class="mobile" id="cmob"></div><div class="msg" id="cx">Cargando…</div></div><script>(function(){var r=document.getElementById('accion-clima');if(!r||r.dataset.ready)return;r.dataset.ready='1';var u='https://raw.githubusercontent.com/acciondelarroque-creator/clima-larroque/main/clima-localidades.json?x='+Date.now(),s=r.querySelector('#cl'),t=r.querySelector('#ct'),st=r.querySelector('#cs'),m=r.querySelector('#cm'),ic=r.querySelector('#ci'),d=r.querySelector('#cd'),mb=r.querySelector('#cmob'),x=r.querySelector('#cx'),L=[];function I(q){q=(q||'').toLowerCase();if(/torment/.test(q))return'⛈️';if(/lluv|chaparr/.test(q))return'🌧️';if(/nieve/.test(q))return'🌨️';if(/niebla|neblina/.test(q))return'🌫️';if(/nublado|cubierto/.test(q))return'☁️';if(/parcial|algo nublado/.test(q))return'⛅';if(/despejado|soleado/.test(q))return'☀️';return'🌤️'}function D(v){if(!v)return'';var z=new Date(v+'T12:00:00');return isNaN(z)?String(v):z.toLocaleDateString('es-AR',{weekday:'short',day:'numeric'}).replace('.','').toUpperCase()}function R(a){if(!a)return; t.textContent=a.actual&&a.actual.temperatura!=null?Math.round(a.actual.temperatura)+'°':'—°';st.textContent=a.actual&&a.actual.estado||'Sin descripción';ic.textContent=I(a.actual&&a.actual.estado);m.textContent='SMN'+(a.actual&&a.actual.humedad!=null?' · 💧 '+a.actual.humedad+'%':'');x.textContent='';var h=(a.pronostico||[]).slice(0,6).map(function(q,i){return '<div class="day"><div class="name">'+(i?'':'HOY · ')+D(q.fecha)+'</div><div class="wicon">'+I(q.estado)+'</div><div><span class="vals">'+(q.max!=null?Math.round(q.max)+'°':'—')+'</span> <span class="min">/'+(q.min!=null?Math.round(q.min)+'°':'—')+'</span><div class="rain">☂ '+(q.lluvia!=null?q.lluvia+'%':'—')+'</div></div></div>'}).join('');d.innerHTML=h;mb.innerHTML=h}function N(lat,lon){var b=null,z=1e99;L.forEach(function(a){if(typeof a.lat!='number'||typeof a.lon!='number')return;var A=(lat-a.lat)*Math.PI/180,B=(lon-a.lon)*Math.PI/180,k=A*A+Math.cos(lat*Math.PI/180)*Math.cos(a.lat*Math.PI/180)*B*B;if(k<z){z=k;b=a}});return b}fetch(u,{cache:'no-store'}).then(function(q){if(!q.ok)throw 0;return q.json()}).then(function(q){L=q.localidades||[];s.innerHTML='<option value="__auto">Detectar ubicación</option>'+L.map(function(a){return '<option>'+a.localidad+'</option>'}).join('');var a=L.filter(function(a){return String(a.localidad).toLowerCase()=='larroque'})[0]||L[0];R(a);if(navigator.geolocation)navigator.geolocation.getCurrentPosition(function(p){var n=N(p.coords.latitude,p.coords.longitude);if(n){s.value=n.localidad;R(n)}},function(){},{maximumAge:3600000,timeout:5000})}).catch(function(){x.textContent='Clima temporalmente no disponible';st.textContent='Datos del SMN en actualización'});s.addEventListener('change',function(){if(s.value=='__auto'){var a=L.filter(function(a){return String(a.localidad).toLowerCase()=='larroque'})[0];if(a)R(a);if(navigator.geolocation)navigator.geolocation.getCurrentPosition(function(p){var n=N(p.coords.latitude,p.coords.longitude);if(n){s.value=n.localidad;R(n)}})}else{var a=L.filter(function(a){return a.localidad==s.value})[0];if(a)R(a)}});var down=false,sx=0,ss=0;mb.addEventListener('pointerdown',function(e){down=true;sx=e.clientX;ss=mb.scrollLeft;mb.classList.add('dragging');mb.setPointerCapture(e.pointerId)});mb.addEventListener('pointermove',function(e){if(down)mb.scrollLeft=ss-(e.clientX-sx)});['pointerup','pointercancel'].forEach(function(q){mb.addEventListener(q,function(){down=false;mb.classList.remove('dragging')})})})();</script></div>
+<div id="accion-clima" style="width:100%;font-family:Arial,Helvetica,sans-serif">
+<style>
+#accion-clima *{box-sizing:border-box}
+#accion-clima .bar{height:60px;width:100%;display:flex;align-items:stretch;background:#f7f9f8;border:1px solid #d5e0da;border-radius:6px;overflow:hidden;color:#173128}
+#accion-clima .now{flex:0 0 220px;background:#006837;color:#fff;display:flex;align-items:center;padding:5px 11px;gap:9px;min-width:0}
+#accion-clima .icon{width:36px;height:36px;flex:0 0 36px;display:flex;align-items:center;justify-content:center;font-size:25px;background:rgba(255,255,255,.12);border-radius:50%}
+#accion-clima .now-info{min-width:0;display:grid;grid-template-columns:auto auto;grid-template-rows:16px 24px 12px;column-gap:8px;align-items:center;flex:1}
+#accion-clima .place{grid-column:1/3;font-size:9px;font-weight:800;text-transform:uppercase;line-height:1;min-width:0;display:flex;align-items:center;gap:3px}
+#accion-clima .place select{border:0;outline:0;background:transparent;color:#fff;font-size:9px;font-weight:800;max-width:135px;padding:0;appearance:auto}
+#accion-clima .place option{color:#173128;background:#fff}
+#accion-clima .temp{font-size:27px;font-weight:800;line-height:1;letter-spacing:-1px}
+#accion-clima .state{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center;max-width:105px}
+#accion-clima .meta{grid-column:1/3;font-size:7px;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#accion-clima .days{display:flex;flex:1;min-width:0;background:#fff}
+#accion-clima .day{flex:1;min-width:105px;border-right:1px solid #e0e8e3;padding:5px 8px;display:grid;grid-template-columns:1fr auto;grid-template-rows:16px 1fr;align-items:center}
+#accion-clima .day:last-child{border:0}
+#accion-clima .name{font-size:8px;font-weight:800;color:#52645b;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1}
+#accion-clima .wicon{grid-row:1/3;grid-column:2;font-size:22px;line-height:1;margin-left:6px}
+#accion-clima .vals{font-size:13px;font-weight:800;color:#173128;line-height:1}
+#accion-clima .min{font-size:9px;color:#89958f;font-weight:500}
+#accion-clima .rain{font-size:7px;color:#006837;margin-top:3px;line-height:1}
+#accion-clima .mobile{display:none}
+#accion-clima .msg{font-size:9px;color:#718079;padding:0 12px;align-self:center;white-space:nowrap}
+@media(max-width:699px){
+#accion-clima .bar{height:60px;border-radius:5px}
+#accion-clima .now{flex-basis:154px!important;padding:5px 8px!important;gap:6px!important}
+#accion-clima .icon{width:30px;height:30px;flex-basis:30px;font-size:21px}
+#accion-clima .now-info{grid-template-columns:auto 1fr;grid-template-rows:15px 23px 11px;column-gap:5px}
+#accion-clima .place{font-size:8px}
+#accion-clima .place select{font-size:8px;max-width:92px}
+#accion-clima .temp{font-size:23px}
+#accion-clima .state{font-size:8px;max-width:75px}
+#accion-clima .meta{font-size:6px}
+#accion-clima .desktop{display:none!important}
+#accion-clima .mobile{display:flex;flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;background:#fff}
+#accion-clima .mobile::-webkit-scrollbar{display:none}
+#accion-clima .mobile.dragging{cursor:grabbing;scroll-snap-type:none}
+#accion-clima .mobile .day{flex:0 0 105px;scroll-snap-align:start}
+#accion-clima .day{padding:5px 7px}
+#accion-clima .name{font-size:8px}
+#accion-clima .wicon{font-size:20px}
+#accion-clima .vals{font-size:12px}
+#accion-clima .min{font-size:8px}
+#accion-clima .rain{font-size:6px}
+}
+</style>
+<div class="bar">
+<div class="now">
+<div class="icon" id="ci">🌤️</div>
+<div class="now-info">
+<div class="place">📍 <select id="cl"><option value="__auto">Detectar ubicación</option></select></div>
+<div class="temp" id="ct">—°</div>
+<div class="state" id="cs">Cargando clima…</div>
+<div class="meta" id="cm">SMN</div>
+</div>
+</div>
+<div class="days desktop" id="cd"></div>
+<div class="mobile" id="cmob"></div>
+<div class="msg" id="cx">Cargando…</div>
+</div>
+<script>
+(function(){
+var r=document.getElementById('accion-clima');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+var u='https://raw.githubusercontent.com/acciondelarroque-creator/clima-larroque/main/clima-localidades.json?x='+Date.now(),s=r.querySelector('#cl'),t=r.querySelector('#ct'),st=r.querySelector('#cs'),m=r.querySelector('#cm'),ic=r.querySelector('#ci'),d=r.querySelector('#cd'),mb=r.querySelector('#cmob'),x=r.querySelector('#cx'),L=[];
+function I(q){q=(q||'').toLowerCase();if(/torment/.test(q))return'⛈️';if(/lluv|chaparr/.test(q))return'🌧️';if(/nieve/.test(q))return'🌨️';if(/niebla|neblina/.test(q))return'🌫️';if(/nublado|cubierto/.test(q))return'☁️';if(/parcial|algo nublado/.test(q))return'⛅';if(/despejado|soleado/.test(q))return'☀️';return'🌤️'}
+function D(v){if(!v)return'';var z=new Date(v+'T12:00:00');return isNaN(z)?String(v):z.toLocaleDateString('es-AR',{weekday:'short',day:'numeric'}).replace('.','').toUpperCase()}
+function R(a){if(!a)return;t.textContent=a.actual&&a.actual.temperatura!=null?Math.round(a.actual.temperatura)+'°':'—°';st.textContent=a.actual&&a.actual.estado||'Sin descripción';ic.textContent=I(a.actual&&a.actual.estado);m.textContent='SMN'+(a.actual&&a.actual.humedad!=null?' · 💧 '+a.actual.humedad+'%':'');x.textContent='';var h=(a.pronostico||[]).slice(0,6).map(function(q,i){return '<div class="day"><div class="name">'+(i?'':'HOY · ')+D(q.fecha)+'</div><div class="wicon">'+I(q.estado)+'</div><div><span class="vals">'+(q.max!=null?Math.round(q.max)+'°':'—')+'</span> <span class="min">/'+(q.min!=null?Math.round(q.min)+'°':'—')+'</span><div class="rain">☂ '+(q.lluvia!=null?q.lluvia+'%':'—')+'</div></div></div>'}).join('');d.innerHTML=h;mb.innerHTML=h}
+function N(lat,lon){var b=null,z=1e99;L.forEach(function(a){if(typeof a.lat!='number'||typeof a.lon!='number')return;var A=(lat-a.lat)*Math.PI/180,B=(lon-a.lon)*Math.PI/180,k=A*A+Math.cos(lat*Math.PI/180)*Math.cos(a.lat*Math.PI/180)*B*B;if(k<z){z=k;b=a}});return b}
+fetch(u,{cache:'no-store'}).then(function(q){if(!q.ok)throw 0;return q.json()}).then(function(q){L=q.localidades||[];s.innerHTML='<option value="__auto">Detectar ubicación</option>'+L.map(function(a){return '<option>'+a.localidad+'</option>'}).join('');var a=L.filter(function(a){return String(a.localidad).toLowerCase()=='larroque'})[0]||L[0];R(a);if(navigator.geolocation)navigator.geolocation.getCurrentPosition(function(p){var n=N(p.coords.latitude,p.coords.longitude);if(n){s.value=n.localidad;R(n)}},function(){},{maximumAge:3600000,timeout:5000})}).catch(function(){x.textContent='Clima temporalmente no disponible';st.textContent='Datos del SMN en actualización'});
+s.addEventListener('change',function(){if(s.value=='__auto'){var a=L.filter(function(a){return String(a.localidad).toLowerCase()=='larroque'})[0];if(a)R(a);if(navigator.geolocation)navigator.geolocation.getCurrentPosition(function(p){var n=N(p.coords.latitude,p.coords.longitude);if(n){s.value=n.localidad;R(n)}})}else{var a=L.filter(function(a){return a.localidad==s.value})[0];if(a)R(a)}});
+var down=false,sx=0,ss=0;mb.addEventListener('pointerdown',function(e){down=true;sx=e.clientX;ss=mb.scrollLeft;mb.classList.add('dragging');mb.setPointerCapture(e.pointerId)});mb.addEventListener('pointermove',function(e){if(down)mb.scrollLeft=ss-(e.clientX-sx)});['pointerup','pointercancel'].forEach(function(q){mb.addEventListener(q,function(){down=false;mb.classList.remove('dragging')})})
+})();
+</script>
+</div>
