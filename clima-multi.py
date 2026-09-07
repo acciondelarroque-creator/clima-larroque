@@ -121,7 +121,7 @@ def transformar_pronostico(datos):
         return []
 
     salida = []
-    for dia in forecast[:6]:
+    for dia in forecast[:7]:
         if not isinstance(dia, dict):
             continue
         periodos = [dia[k] for k in ("early_morning", "morning", "afternoon", "night") if isinstance(dia.get(k), dict)]
