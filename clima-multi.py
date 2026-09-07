@@ -1,110 +1,182 @@
 import json
+import re
+import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-API_URL = "https://ws.smn.gob.ar/map_items/weather"
+SMN_WEB = "https://ws2.smn.gob.ar/pronostico"
+SMN_API = "https://ws1.smn.gob.ar/v1"
 DEFAULT_NAME = "Larroque"
-DEFAULT_ID = 954
+DEFAULT_PROVINCE = "Entre Ríos"
 
 
-def descargar():
-    req = urllib.request.Request(API_URL, headers={"User-Agent": "clima-larroque/1.1"})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        return json.load(response)
+def get_text(url, headers=None, attempts=4):
+    last = None
+    for attempt in range(1, attempts + 1):
+        try:
+            req = urllib.request.Request(url, headers=headers or {"User-Agent": "Accion-Clima/2.0"})
+            with urllib.request.urlopen(req, timeout=30) as response:
+                return response.read().decode("utf-8")
+        except Exception as exc:
+            last = exc
+            if attempt < attempts:
+                time.sleep(attempt * 2)
+    raise last
 
 
-def numero(valor):
+def get_json(url, headers=None, attempts=4):
+    return json.loads(get_text(url, headers=headers, attempts=attempts))
+
+
+def token_smn():
+    html = get_text(SMN_WEB, {"User-Agent": "Accion-Clima/2.0", "Referer": "https://www.smn.gob.ar/"})
+    patterns = [
+        r"localStorage\.setItem\(['\"]token['\"],\s*['\"]([^'\"]+)",
+        r'localStorage\.setItem\("token",\s*"([^"]+)"',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html, re.I)
+        if match:
+            return match.group(1)
+    raise RuntimeError("No se pudo obtener el token JWT del SMN")
+
+
+def headers(token):
+    return {
+        "User-Agent": "Accion-Clima/2.0",
+        "Authorization": f"JWT {token}",
+        "Referer": "https://www.smn.gob.ar/",
+        "Accept": "application/json",
+    }
+
+
+def numero(value):
     try:
-        return round(float(valor), 1) if valor is not None else None
+        return round(float(value), 1) if value is not None else None
     except (TypeError, ValueError):
         return None
 
 
-def coord(item, *keys):
-    for key in keys:
-        value = item.get(key)
-        if value is not None:
-            try:
-                return float(value)
-            except (TypeError, ValueError):
-                pass
-    location = item.get("location") or item.get("coordinates") or {}
-    for key in keys:
-        value = location.get(key)
-        if value is not None:
-            try:
-                return float(value)
-            except (TypeError, ValueError):
-                pass
-    return None
+def buscar_localidad(token, nombre):
+    url = f"{SMN_API}/georef/location/search?name={urllib.parse.quote(nombre)}"
+    resultados = get_json(url, headers(token))
+    if not isinstance(resultados, list) or not resultados:
+        raise RuntimeError(f"No se encontró la localidad {nombre}")
 
-
-def transformar(item):
-    weather = item.get("weather") or {}
-    forecast_obj = (item.get("forecast") or {}).get("forecast") or {}
-    if isinstance(forecast_obj, dict):
-        dias = [forecast_obj[k] for k in sorted(forecast_obj, key=lambda x: int(x) if str(x).isdigit() else 999) if isinstance(forecast_obj[k], dict)]
-    elif isinstance(forecast_obj, list):
-        dias = forecast_obj
-    else:
-        dias = []
-
-    pronostico = []
-    for dato in dias[:6]:
-        manana = dato.get("morning") or {}
-        tarde = dato.get("afternoon") or {}
-        pronostico.append({
-            "fecha": dato.get("date"),
-            "min": numero(dato.get("temp_min")),
-            "max": numero(dato.get("temp_max")),
-            "estado": tarde.get("description") or manana.get("description") or "",
-            "weather_id": tarde.get("weather_id") or manana.get("weather_id"),
-            "lluvia": dato.get("prob_precipitation", dato.get("probability_of_precipitation")),
-        })
+    exactos = [x for x in resultados if isinstance(x, list) and len(x) >= 4 and str(x[1]).strip().lower() == nombre.lower()]
+    candidatos = exactos or resultados
+    er = [x for x in candidatos if len(x) >= 4 and str(x[3]).strip().lower() == DEFAULT_PROVINCE.lower()]
+    elegido = er[0] if er else candidatos[0]
 
     return {
-        "id": item.get("lid") or item.get("id"),
-        "localidad": item.get("name") or "",
-        "provincia": item.get("province") or "",
-        "lat": coord(item, "lat", "latitude", "latitud"),
-        "lon": coord(item, "lon", "lng", "longitude", "longitud"),
-        "actual": {
-            "temperatura": numero(weather.get("temp")),
-            "sensacion": numero(weather.get("st")),
-            "humedad": weather.get("humidity"),
-            "presion": numero(weather.get("pressure")),
-            "viento_kmh": weather.get("wind_speed"),
-            "viento_direccion": weather.get("wind_deg"),
-            "estado": weather.get("description") or weather.get("tempDesc") or "",
-            "weather_id": weather.get("id"),
-        },
-        "pronostico": pronostico,
+        "id": str(elegido[0]),
+        "localidad": str(elegido[1]),
+        "departamento": str(elegido[2]) if len(elegido) > 2 else "",
+        "provincia": str(elegido[3]) if len(elegido) > 3 else DEFAULT_PROVINCE,
     }
+
+
+def obtener_actual(token, location_id):
+    url = f"{SMN_API}/weather/location/{location_id}"
+    return get_json(url, headers(token))
+
+
+def obtener_pronostico(token, location_id):
+    url = f"{SMN_API}/forecast/location/{location_id}"
+    return get_json(url, headers(token))
+
+
+def transformar_actual(actual):
+    weather = actual.get("weather") or {}
+    wind = actual.get("wind") or {}
+    location = actual.get("location") or {}
+    coord = location.get("coord") or {}
+    return {
+        "temperatura": numero(actual.get("temperature")),
+        "sensacion": numero(actual.get("feels_like")),
+        "humedad": numero(actual.get("humidity")),
+        "presion": numero(actual.get("pressure")),
+        "viento_kmh": numero(wind.get("speed")),
+        "viento_direccion": wind.get("deg"),
+        "estado": weather.get("description") or "",
+        "weather_id": weather.get("id"),
+        "fecha": actual.get("date"),
+        "estacion_id": actual.get("station_id"),
+        "visibilidad_km": numero(actual.get("visibility")),
+    }, coord
+
+
+def transformar_pronostico(datos):
+    forecast = datos.get("forecast") if isinstance(datos, dict) else datos
+    if not isinstance(forecast, list):
+        return []
+
+    salida = []
+    for dia in forecast[:6]:
+        if not isinstance(dia, dict):
+            continue
+        periodos = []
+        for key in ("early_morning", "morning", "afternoon", "night"):
+            if isinstance(dia.get(key), dict):
+                periodos.append(dia[key])
+
+        temps = [numero(p.get("temperature")) for p in periodos]
+        temps = [x for x in temps if x is not None]
+        estados = [p for p in periodos if p.get("weather")]
+        principal = next((p for p in estados if p.get("weather", {}).get("description")), estados[0] if estados else {})
+        weather = principal.get("weather") or {}
+
+        probs = []
+        for p in periodos:
+            r = p.get("rain_prob_range")
+            if isinstance(r, list) and r:
+                try:
+                    probs.append(float(r[1] if len(r) > 1 else r[0]))
+                except (TypeError, ValueError):
+                    pass
+
+        salida.append({
+            "fecha": dia.get("date"),
+            "min": min(temps) if temps else None,
+            "max": max(temps) if temps else None,
+            "estado": weather.get("description") or "",
+            "weather_id": weather.get("id"),
+            "lluvia": max(probs) if probs else None,
+        })
+    return salida
 
 
 def main():
-    datos = descargar()
-    if not isinstance(datos, list) or not datos:
-        raise RuntimeError("El SMN no devolvió localidades")
+    token = token_smn()
+    lugar = buscar_localidad(token, DEFAULT_NAME)
+    actual_raw = obtener_actual(token, lugar["id"])
+    forecast_raw = obtener_pronostico(token, lugar["id"])
+    actual, coord = transformar_actual(actual_raw)
 
-    localidades = []
-    for item in datos:
-        nombre = str(item.get("name") or "").strip()
-        if not nombre:
-            continue
-        localidades.append(transformar(item))
-
-    localidades.sort(key=lambda x: (x.get("provincia") or "", x.get("localidad") or ""))
     salida = {
-        "default": DEFAULT_NAME,
-        "default_id": DEFAULT_ID,
+        "default": lugar["localidad"],
+        "default_id": lugar["id"],
         "fuente": "Servicio Meteorológico Nacional",
         "actualizado": datetime.now(timezone.utc).astimezone().isoformat(timespec="minutes"),
-        "localidades": localidades,
+        "localidades": [{
+            "id": lugar["id"],
+            "localidad": lugar["localidad"],
+            "provincia": lugar["provincia"],
+            "departamento": lugar["departamento"],
+            "lat": numero(coord.get("lat")),
+            "lon": numero(coord.get("lon")),
+            "actual": actual,
+            "pronostico": transformar_pronostico(forecast_raw),
+        }],
     }
-    Path("clima-localidades.json").write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Localidades guardadas: {len(localidades)}")
+
+    Path("clima-localidades.json").write_text(
+        json.dumps(salida, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    print(json.dumps(salida, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
