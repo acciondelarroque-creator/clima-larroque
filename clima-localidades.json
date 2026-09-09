@@ -2,7 +2,7 @@
   "default": "Larroque",
   "default_id": "7868",
   "fuente": "Servicio Meteorológico Nacional",
-  "actualizado": "2026-09-09T20:31+00:00",
+  "actualizado": "2026-09-09T21:30+00:00",
   "localidades": [
     {
       "id": "7868",
@@ -12,23 +12,23 @@
       "lat": -33.0,
       "lon": -59.0,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -45,9 +45,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -91,23 +91,23 @@
       "lat": -33.0,
       "lon": -58.5,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -124,9 +124,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -170,25 +170,25 @@
       "lat": -33.2,
       "lon": -59.3,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 12.0,
-          "max": 19.0,
-          "estado": "Mayormente nublado",
-          "weather_id": 37,
+          "max": 12.0,
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
           "lluvia": 0.0
         },
         {
@@ -201,11 +201,11 @@
         },
         {
           "fecha": "2026-09-11",
-          "min": 14.0,
+          "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -249,15 +249,15 @@
       "lat": -31.4,
       "lon": -58.0,
       "actual": {
-        "temperatura": 23.4,
+        "temperatura": 21.8,
         "sensacion": null,
-        "humedad": 42.0,
-        "presion": 1008.4,
-        "viento_kmh": null,
-        "viento_direccion": null,
+        "humedad": 48.0,
+        "presion": 1008.5,
+        "viento_kmh": 4.0,
+        "viento_direccion": 180.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87395,
         "visibilidad_km": 15.0
       },
@@ -265,25 +265,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 21.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
-          "lluvia": 10.0
-        },
-        {
-          "fecha": "2026-09-10",
-          "min": 11.0,
-          "max": 25.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
         },
         {
+          "fecha": "2026-09-10",
+          "min": 11.0,
+          "max": 25.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 10.0
+        },
+        {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -344,25 +344,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -407,23 +407,23 @@
       "lat": -32.5,
       "lon": -58.2,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -440,9 +440,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -502,25 +502,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -565,15 +565,15 @@
       "lat": -32.6,
       "lon": -60.2,
       "actual": {
-        "temperatura": 18.6,
+        "temperatura": 17.5,
         "sensacion": null,
-        "humedad": 58.0,
-        "presion": 1010.2,
+        "humedad": 61.0,
+        "presion": 1010.6,
         "viento_kmh": 15.0,
         "viento_direccion": 45.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87480,
         "visibilidad_km": 15.0
       },
@@ -581,9 +581,9 @@
         {
           "fecha": "2026-09-09",
           "min": 12.0,
-          "max": 19.0,
-          "estado": "Mayormente nublado",
-          "weather_id": 37,
+          "max": 12.0,
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
           "lluvia": 0.0
         },
         {
@@ -596,11 +596,11 @@
         },
         {
           "fecha": "2026-09-11",
-          "min": 14.0,
+          "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -660,25 +660,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -723,15 +723,15 @@
       "lat": -30.8,
       "lon": -58.0,
       "actual": {
-        "temperatura": 23.4,
+        "temperatura": 21.8,
         "sensacion": null,
-        "humedad": 42.0,
-        "presion": 1008.4,
-        "viento_kmh": null,
-        "viento_direccion": null,
+        "humedad": 48.0,
+        "presion": 1008.5,
+        "viento_kmh": 4.0,
+        "viento_direccion": 180.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87395,
         "visibilidad_km": 15.0
       },
@@ -739,25 +739,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 21.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
-          "lluvia": 10.0
-        },
-        {
-          "fecha": "2026-09-10",
-          "min": 11.0,
-          "max": 25.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
         },
         {
+          "fecha": "2026-09-10",
+          "min": 11.0,
+          "max": 25.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 10.0
+        },
+        {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -802,23 +802,23 @@
       "lat": -32.2,
       "lon": -58.1,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -835,9 +835,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -881,15 +881,15 @@
       "lat": -31.0,
       "lon": -57.9,
       "actual": {
-        "temperatura": 23.4,
+        "temperatura": 21.8,
         "sensacion": null,
-        "humedad": 42.0,
-        "presion": 1008.4,
-        "viento_kmh": null,
-        "viento_direccion": null,
+        "humedad": 48.0,
+        "presion": 1008.5,
+        "viento_kmh": 4.0,
+        "viento_direccion": 180.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87395,
         "visibilidad_km": 15.0
       },
@@ -897,25 +897,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 21.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
-          "lluvia": 10.0
-        },
-        {
-          "fecha": "2026-09-10",
-          "min": 11.0,
-          "max": 25.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
         },
         {
+          "fecha": "2026-09-10",
+          "min": 11.0,
+          "max": 25.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 10.0
+        },
+        {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -976,25 +976,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1055,25 +1055,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1118,15 +1118,15 @@
       "lat": -30.9,
       "lon": -58.8,
       "actual": {
-        "temperatura": 23.4,
+        "temperatura": 21.8,
         "sensacion": null,
-        "humedad": 42.0,
-        "presion": 1008.4,
-        "viento_kmh": null,
-        "viento_direccion": null,
+        "humedad": 48.0,
+        "presion": 1008.5,
+        "viento_kmh": 4.0,
+        "viento_direccion": 180.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87395,
         "visibilidad_km": 15.0
       },
@@ -1134,25 +1134,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 21.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
-          "lluvia": 10.0
-        },
-        {
-          "fecha": "2026-09-10",
-          "min": 11.0,
-          "max": 25.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
         },
         {
+          "fecha": "2026-09-10",
+          "min": 11.0,
+          "max": 25.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 10.0
+        },
+        {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1197,23 +1197,23 @@
       "lat": -32.2,
       "lon": -58.2,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -1230,9 +1230,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -1276,15 +1276,15 @@
       "lat": -31.6,
       "lon": -58.5,
       "actual": {
-        "temperatura": 23.4,
+        "temperatura": 21.8,
         "sensacion": null,
-        "humedad": 42.0,
-        "presion": 1008.4,
-        "viento_kmh": null,
-        "viento_direccion": null,
+        "humedad": 48.0,
+        "presion": 1008.5,
+        "viento_kmh": 4.0,
+        "viento_direccion": 180.0,
         "estado": "Parcialmente nublado",
         "weather_id": 25,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87395,
         "visibilidad_km": 15.0
       },
@@ -1292,25 +1292,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 21.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
-          "lluvia": 10.0
-        },
-        {
-          "fecha": "2026-09-10",
-          "min": 11.0,
-          "max": 25.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
         },
         {
+          "fecha": "2026-09-10",
+          "min": 11.0,
+          "max": 25.0,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
+          "lluvia": 10.0
+        },
+        {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1355,23 +1355,23 @@
       "lat": -32.3,
       "lon": -59.1,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -1388,9 +1388,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -1434,23 +1434,23 @@
       "lat": -32.4,
       "lon": -58.9,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -1467,9 +1467,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -1513,23 +1513,23 @@
       "lat": -32.7,
       "lon": -58.9,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -1546,9 +1546,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -1608,25 +1608,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1687,25 +1687,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1766,25 +1766,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1845,25 +1845,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -1924,25 +1924,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -2003,25 +2003,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
@@ -2066,23 +2066,23 @@
       "lat": -32.2,
       "lon": -58.4,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -2099,9 +2099,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -2145,23 +2145,23 @@
       "lat": -33.7,
       "lon": -59.2,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -2178,9 +2178,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -2224,23 +2224,23 @@
       "lat": -33.5,
       "lon": -58.8,
       "actual": {
-        "temperatura": 15.6,
+        "temperatura": 14.2,
         "sensacion": null,
-        "humedad": 76.0,
-        "presion": 1012.6,
-        "viento_kmh": 15.0,
-        "viento_direccion": 45.0,
-        "estado": "Nublado con lluvia en la hora anterior",
-        "weather_id": 43,
-        "fecha": "2026-09-09T17:00:00-03:00",
+        "humedad": 85.0,
+        "presion": 1012.2,
+        "viento_kmh": 12.0,
+        "viento_direccion": 90.0,
+        "estado": "Nublado con lluvia débil",
+        "weather_id": 72,
+        "fecha": "2026-09-09T18:00:00-03:00",
         "estacion_id": 87497,
-        "visibilidad_km": 15.0
+        "visibilidad_km": 5.0
       },
       "pronostico": [
         {
           "fecha": "2026-09-09",
           "min": 11.0,
-          "max": 18.0,
+          "max": 11.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
           "lluvia": 0.0
@@ -2257,9 +2257,9 @@
           "fecha": "2026-09-11",
           "min": 11.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
-          "lluvia": 10.0
+          "estado": "Chaparrones",
+          "weather_id": 74,
+          "lluvia": 40.0
         },
         {
           "fecha": "2026-09-12",
@@ -2319,25 +2319,25 @@
         {
           "fecha": "2026-09-09",
           "min": 13.0,
-          "max": 22.0,
+          "max": 13.0,
           "estado": "Parcialmente nublado",
           "weather_id": 25,
-          "lluvia": 10.0
+          "lluvia": 0.0
         },
         {
           "fecha": "2026-09-10",
           "min": 10.0,
           "max": 22.0,
-          "estado": "Parcialmente nublado",
-          "weather_id": 25,
+          "estado": "Mayormente nublado",
+          "weather_id": 37,
           "lluvia": 0.0
         },
         {
           "fecha": "2026-09-11",
           "min": 13.0,
           "max": 16.0,
-          "estado": "Nublado",
-          "weather_id": 43,
+          "estado": "Tormentas aisladas",
+          "weather_id": 76,
           "lluvia": 40.0
         },
         {
