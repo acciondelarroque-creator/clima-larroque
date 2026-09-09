@@ -2,7 +2,7 @@
   "default": "Larroque",
   "default_id": "7868",
   "fuente": "Servicio Meteorológico Nacional",
-  "actualizado": "2026-09-09T14:32+00:00",
+  "actualizado": "2026-09-09T15:04+00:00",
   "localidades": [
     {
       "id": "7868",
@@ -266,9 +266,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 21.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -345,9 +345,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -503,9 +503,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -661,9 +661,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -740,9 +740,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 21.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -898,9 +898,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 21.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -977,9 +977,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1056,9 +1056,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1135,9 +1135,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 21.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1293,9 +1293,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 21.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1609,9 +1609,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1688,9 +1688,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1767,9 +1767,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1846,9 +1846,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -1925,9 +1925,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -2004,9 +2004,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
@@ -2320,9 +2320,9 @@
           "fecha": "2026-09-09",
           "min": 13.0,
           "max": 22.0,
-          "estado": "Lluvias aisladas",
-          "weather_id": 72,
-          "lluvia": 40.0
+          "estado": "Parcialmente nublado",
+          "weather_id": 25,
+          "lluvia": 10.0
         },
         {
           "fecha": "2026-09-10",
