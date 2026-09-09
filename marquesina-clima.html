@@ -1,7 +1,7 @@
 <div id="accion-clima" style="width:100%;font-family:Arial,Helvetica,sans-serif">
 <style>
 #accion-clima *{box-sizing:border-box}
-#accion-clima .bar{height:64px;width:100%;display:flex;background:#fff;border:1px solid #d5e0da;border-radius:6px;overflow:visible;color:#173128}
+#accion-clima .bar{height:64px;width:100%;display:flex;background:#fff;border:1px solid #d5e0da;border-radius:6px;overflow:visible;color:#173128;position:relative}
 #accion-clima .now{flex:0 0 245px;background:#006837;color:#fff;display:flex;align-items:center;padding:5px 9px;gap:8px;border-radius:5px 0 0 5px;position:relative;z-index:10}
 #accion-clima .icon{width:42px;height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;font-size:31px;background:rgba(255,255,255,.12);border-radius:50%}
 #accion-clima .info{min-width:0;display:grid;grid-template-columns:auto 1fr;grid-template-rows:18px 25px 11px;column-gap:6px;align-items:center;flex:1}
@@ -12,7 +12,9 @@
 #accion-clima .temp{font-size:28px;font-weight:800;line-height:1}
 #accion-clima .state{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #accion-clima .meta{grid-column:1/3;font-size:7px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#accion-clima .days{display:flex;flex:1;min-width:0;overflow:hidden;background:#fff;border-radius:0 5px 5px 0}
+#accion-clima .days-wrap{position:relative;flex:1;min-width:0;overflow:hidden;background:#fff;border-radius:0 5px 5px 0}
+#accion-clima .days{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;background:#fff;scrollbar-width:none;scroll-behavior:smooth;touch-action:pan-x}
+#accion-clima .days::-webkit-scrollbar{display:none}
 #accion-clima .day{flex:1;min-width:108px;border-right:1px solid #e0e8e3;padding:5px 8px;display:grid;grid-template-columns:1fr auto;grid-template-rows:17px 1fr;align-items:center}
 #accion-clima .day:last-child{border-right:0}
 #accion-clima .name{font-size:8px;font-weight:800;color:#52645b;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -20,6 +22,11 @@
 #accion-clima .vals{font-size:14px;font-weight:800;color:#173128}
 #accion-clima .min{font-size:12px;font-weight:800;color:#40564c}
 #accion-clima .rain{font-size:11px;font-weight:800;color:#006837;margin-top:3px}
+#accion-clima .clima-arrow{position:absolute;z-index:20;top:50%;transform:translateY(-50%);width:30px;height:48px;border:0;background:rgba(0,104,55,.82);color:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;font:700 28px/1 Arial,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.2);animation:clima-pulse 3s ease-in-out infinite}
+#accion-clima .clima-arrow.left{left:3px;animation-delay:.25s}
+#accion-clima .clima-arrow.right{right:3px}
+#accion-clima .clima-arrow:hover{background:#006837}
+@keyframes clima-pulse{0%,72%,100%{opacity:.72;transform:translateY(-50%) scale(1)}80%{opacity:1;transform:translateY(-50%) scale(1.12)}88%{opacity:.84;transform:translateY(-50%) scale(1)}}
 @media(max-width:699px){
 #accion-clima .bar{height:62px}
 #accion-clima .now{flex-basis:185px;padding:5px 7px;gap:6px}
@@ -29,13 +36,13 @@
 #accion-clima .temp{font-size:25px}
 #accion-clima .state{font-size:8px;max-width:78px}
 #accion-clima .meta{font-size:6px}
-#accion-clima .days{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-#accion-clima .days::-webkit-scrollbar{display:none}
-#accion-clima .day{flex:0 0 108px;scroll-snap-align:start;padding:5px 7px}
+#accion-clima .days-wrap{overflow:hidden}
+#accion-clima .day{flex:0 0 108px;padding:5px 7px}
 #accion-clima .wicon{font-size:27px}
 #accion-clima .vals{font-size:13px}
 #accion-clima .min{font-size:11px}
 #accion-clima .rain{font-size:10px}
+#accion-clima .clima-arrow{width:28px;height:40px;font-size:24px}
 }
 </style>
 
@@ -59,7 +66,11 @@
       <div class="meta" id="clima-meta">SMN</div>
     </div>
   </div>
-  <div class="days" id="clima-days"></div>
+  <div class="days-wrap">
+    <button class="clima-arrow left" id="clima-left" aria-label="Pronóstico anterior">‹</button>
+    <div class="days" id="clima-days"></div>
+    <button class="clima-arrow right" id="clima-right" aria-label="Más pronóstico">›</button>
+  </div>
 </div>
 
 <script>
@@ -69,7 +80,7 @@ if(!root||root.getAttribute('data-clima-ok'))return;
 root.setAttribute('data-clima-ok','1');
 
 var url='https://raw.githubusercontent.com/acciondelarroque-creator/clima-larroque/main/clima-localidades.json?x='+Date.now();
-var icon=root.querySelector('#clima-icon'),temp=root.querySelector('#clima-temp'),state=root.querySelector('#clima-state'),meta=root.querySelector('#clima-meta'),days=root.querySelector('#clima-days'),sel=root.querySelector('#clima-loc'),data=null;
+var icon=root.querySelector('#clima-icon'),temp=root.querySelector('#clima-temp'),state=root.querySelector('#clima-state'),meta=root.querySelector('#clima-meta'),days=root.querySelector('#clima-days'),sel=root.querySelector('#clima-loc'),left=root.querySelector('#clima-left'),right=root.querySelector('#clima-right'),data=null;
 
 function weatherIcon(s){
 s=(s||'').toLowerCase();
@@ -96,6 +107,7 @@ meta.textContent='SMN'+(a.actual&&a.actual.humedad!=null?' · 💧 '+Math.round(
 days.innerHTML=(a.pronostico||[]).slice(0,6).map(function(q,i){
 return '<div class="day"><div class="name">'+(i?'':'HOY · ')+dayName(q.fecha)+'</div><div class="wicon">'+weatherIcon(q.estado)+'</div><div><span class="vals">'+(q.max!=null?Math.round(q.max)+'°':'—')+'</span> <span class="min">/ '+(q.min!=null?Math.round(q.min)+'°':'—')+'</span><div class="rain">☂ '+(q.lluvia!=null?Math.round(q.lluvia)+'%':'—')+'</div></div></div>';
 }).join('');
+updateArrows();
 }
 function choose(id){
 if(!data)return;
@@ -105,7 +117,21 @@ render(a);
 try{localStorage.setItem('accionClimaLocalidad',a.id)}catch(e){}
 }
 }
+function updateArrows(){
+var max=Math.max(0,days.scrollWidth-days.clientWidth),x=days.scrollLeft;
+left.style.opacity=x>3?'1':'.72';
+right.style.opacity=x<max-3?'1':'.72';
+}
+function move(n){
+var paso=Math.max(150,days.clientWidth*.65);
+days.scrollBy({left:n*paso,behavior:'smooth'});
+setTimeout(updateArrows,350);
+}
 sel.addEventListener('change',function(){choose(this.value)});
+left.addEventListener('click',function(){move(-1)});
+right.addEventListener('click',function(){move(1)});
+days.addEventListener('scroll',updateArrows,{passive:true});
+window.addEventListener('resize',updateArrows);
 
 fetch(url,{cache:'no-store'})
 .then(function(r){if(!r.ok)throw 0;return r.json()})
