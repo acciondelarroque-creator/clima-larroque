@@ -2,7 +2,7 @@
   "default": "Larroque",
   "default_id": "7868",
   "fuente": "Servicio Meteorológico Nacional",
-  "actualizado": "2026-09-13T03:30+00:00",
+  "actualizado": "2026-09-13T04:31+00:00",
   "localidades": [
     {
       "id": "7868",
@@ -565,15 +565,15 @@
       "lat": -32.6,
       "lon": -60.2,
       "actual": {
-        "temperatura": 6.8,
-        "sensacion": 5.0,
-        "humedad": 75.0,
-        "presion": 1032.1,
+        "temperatura": 5.2,
+        "sensacion": 3.1,
+        "humedad": 85.0,
+        "presion": 1032.2,
         "viento_kmh": 10.0,
         "viento_direccion": 180.0,
         "estado": "Algo nublado",
         "weather_id": 19,
-        "fecha": "2026-09-13T00:00:00-03:00",
+        "fecha": "2026-09-13T01:00:00-03:00",
         "estacion_id": 87480,
         "visibilidad_km": 15.0
       },
